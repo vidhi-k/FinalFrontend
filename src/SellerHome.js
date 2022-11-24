@@ -13,6 +13,7 @@ const SellerHome = () => {
   const [shops, setShops] = useState([]);
   const navigate = useNavigate();
   const loggedInUser = localStorage.getItem("user");
+  const isAuthenticated = localStorage.getItem("isAuthenticated");
 
   useEffect(() => {
     // console.log(loggedInUser);
@@ -23,11 +24,11 @@ const SellerHome = () => {
       })
   }, [])
 
-  const isAuthenticated = localStorage.getItem("isAuthenticated");
-  if (!isAuthenticated) {
+  if (isAuthenticated === false) {
+    console.log(isAuthenticated);
     return <Navigate to="/" replace></Navigate>
   }
-
+  
   const handleSubmit = async (event) => {
     navigate("/sellernewshop");
   }
