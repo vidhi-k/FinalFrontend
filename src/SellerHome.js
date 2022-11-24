@@ -34,11 +34,7 @@ const SellerHome = () => {
     navigate("/sellernewshop");
   }
 
-  const handleC = async (event) => {
-    navigate("/sellerviewresult");
-  }
-
-  const handleClick = async (event) => {
+    const handleClick = async (event) => {
     // console.log(event.target);
     navigate("/sellershop");
   }
@@ -59,9 +55,11 @@ const SellerHome = () => {
           <div className="cards">
             <Card style={{ width: '18rem' }}>
               <Card.Body>
-                <Card.Title><a href="/sellerviewresult" class="text-decoration-none"  onClick={(e) => handleC(e)}>{shop.businessName}</a></Card.Title>
-                <Card.Text >
+                <Card.Title>
+                  <a href="#" class="text-decoration-none" >{shop.businessName}</a> 
                   {localStorage.setItem('shop', shop.businessName)}
+                </Card.Title>
+                <Card.Text >
                   {shop.description}
                 </Card.Text>
               </Card.Body>
