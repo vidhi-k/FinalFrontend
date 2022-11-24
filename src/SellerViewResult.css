@@ -1,6 +1,8 @@
-.heade
+.header_name
 {
     justify-content: center;
+    text-align: center;
+    margin-top: 10px;
 }
 .map
 {

@@ -47,7 +47,7 @@ const BuyerLogin = () => {
        <Form className='rounded p-4 p-sm-3'>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Contact Number</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" required="true" onChange={e => setContact(e.target.value)} />
+        <Form.Control type="number" placeholder="Enter Contact Number" required="true" onChange={e => setContact(e.target.value)} />
         <Form.Text className="text-muted">
         </Form.Text>
       </Form.Group>

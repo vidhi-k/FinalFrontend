@@ -52,7 +52,7 @@ const BuyerSignUp = () => {
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicNumber">
         <Form.Label>Contact Number</Form.Label>
-        <Form.Control type="phoneNumber" placeholder="Phone Number" required="true" onChange={e => setContact(e.target.value)}/>
+        <Form.Control type="number" placeholder="Enter Contact Number" required="true" onChange={e => setContact(e.target.value)}/>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>

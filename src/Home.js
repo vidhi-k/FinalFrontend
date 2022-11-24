@@ -2,6 +2,10 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import './Home.css';
 const Home = () => {
+
+  localStorage.setItem("isAuthenticated", "false");
+  localStorage.setItem('user', "");
+
   return (
     <>
       

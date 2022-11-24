@@ -1,9 +1,8 @@
 import Container from 'react-bootstrap/Container';
-import { useNavigate } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import './Header.css';
 
-const sellerHeader = () => {
+const SellerHeader = () => {
 
   return (
         <>
@@ -17,4 +16,4 @@ const sellerHeader = () => {
   )
 }
 
-export default sellerHeader
+export default SellerHeader

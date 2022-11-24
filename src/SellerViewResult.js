@@ -1,52 +1,78 @@
 import React from "react";
-import BingMapsReact from "bingmaps-react";
 import Card from 'react-bootstrap/Card';
-import call from './call.png';
+import Header from "./Header";
 import './SellerViewResult.css';
-import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
-const api_key = process.env.REACT_APP_SECRET_KEY;
-function sellerviewresult() {
-  const pushPin = {
-    center: {
-      latitude: 15.3911,
-      longitude: 73.8782,
-    },
-    options: {
-      title: "GOA",
-    },
+import { Navigate } from "react-router-dom";
+import axios from "./axios";
+import { useEffect, useState } from "react";
+
+function Sellerviewresult() {
+
+  const [shops, setShops] = useState([]);
+  const isAuthenticated = localStorage.getItem("isAuthenticated");
+  const loggedInUser = localStorage.getItem("user");
+  const loggedInShop = localStorage.getItem("shop");
+
+  useEffect(() => {
+    // console.log(loggedInUser);
+    axios.get("/seller/shops")
+      .then(response => {
+        // console.log(response);
+        setShops(response.data);
+      })
+  });
+
+
+  console.log(shops);
+
+  if (isAuthenticated === "false") {
+    return <Navigate to="/" replace></Navigate>
   }
-  const pushPins = [pushPin];
+
+  const finalShop = shops.filter((shop) => {
+    return shop.name === loggedInUser && shop.businessName === loggedInShop;
+  })
+
+  // console.log(finalShop); 
+
+
   return (
     <>
-    <Navbar className='heade' bg="light" variant="light">
-    <h3>Looking for Customers for Shop 1</h3>
-    </Navbar>
-    <div className="map">
-    <BingMapsReact
-       bingMapsKey="Aii34A2mdkyAxpDWkr7FXNAMrBz-1OWElTrJfjqpslPFm2odJHeyziXBkRscsD1p"
-      height={500}
-      mapOptions={{
-        navigationBarMode: "square",
-      }}
-      pushPins={pushPins}
-      viewOptions={{
-        center: { latitude: 15.3911, longitude: 73.8782 },
-        mapTypeId: "Aerial",
-      }}
-    />
-    </div>
-    <Container>
-      <div className="hehe"><h5>Nearby Customers</h5></div>
-      <br/>
-      <Card>
-      <Card.Body>
-        <Card.Title>Customer 1</Card.Title>
-        <img src={call} width={40} height={40}/>
-      </Card.Body>
-    </Card>
-    </Container>
+      <Header></Header>
+
+      <div className='header_name' bg="light" variant="light">
+        <h3>{loggedInShop}</h3>
+      </div>
+
+      <Container>
+        <Card className="text-align-left">
+          <Card.Body>
+            <Card.Title>Owner's Name </Card.Title>
+            <Card.Text>
+              {loggedInUser}
+            </Card.Text>
+            <Card.Title>Contact</Card.Title>
+            <Card.Text>
+              {finalShop[0].contact}
+            </Card.Text>
+            <Card.Title>Address</Card.Title>
+            <Card.Text>
+              {finalShop[0].address}
+            </Card.Text>
+            <Card.Title>Description</Card.Title>
+            <Card.Text>
+              {finalShop[0].description}
+            </Card.Text>
+            <Card.Title>Items</Card.Title>
+            <Card.Text>
+              {finalShop[0].listOfItems}
+
+            </Card.Text>
+          </Card.Body>
+        </Card>
+      </Container>
     </>
   );
 }
-export default sellerviewresult;
+export default Sellerviewresult;

@@ -5,11 +5,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './SignUp.css';
 import { useState} from "react";
 import axios from './axios';
-import { useNavigate} from "react-router-dom";
+import { useNavigate, Navigate} from "react-router-dom";
 
 const SellerSignUp = () => {
   const navigate = useNavigate();
-
+  
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
   const [password, setPassword] = useState("");
@@ -50,7 +50,7 @@ const SellerSignUp = () => {
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicNumber">
         <Form.Label>Contact Number</Form.Label>
-        <Form.Control type="phoneNumber" placeholder="Phone Number" required="true" onChange={e => setContact(e.target.value)}/>
+        <Form.Control type="number" placeholder="Enter Contact Number" required="true" onChange={e => setContact(e.target.value)}/>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>

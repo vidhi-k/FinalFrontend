@@ -14,6 +14,7 @@ const SellerHome = () => {
   const navigate = useNavigate();
   const loggedInUser = localStorage.getItem("user");
   const isAuthenticated = localStorage.getItem("isAuthenticated");
+  localStorage.setItem('shop', "");
 
   useEffect(() => {
     // console.log(loggedInUser);
@@ -24,7 +25,7 @@ const SellerHome = () => {
       })
   }, [])
 
-  if (isAuthenticated === false) {
+  if (isAuthenticated === "false") {
     console.log(isAuthenticated);
     return <Navigate to="/" replace></Navigate>
   }
@@ -33,10 +34,19 @@ const SellerHome = () => {
     navigate("/sellernewshop");
   }
 
+  const handleC = async (event) => {
+    navigate("/sellerviewresult");
+  }
+
+  const handleClick = async (event) => {
+    // console.log(event.target);
+    navigate("/sellershop");
+  }
+
   var finalShops = shops.filter((shop) => {
     return shop.name === loggedInUser;
   })
-  console.log(finalShops);
+  // console.log(finalShops);
 
   return (
 
@@ -49,13 +59,15 @@ const SellerHome = () => {
           <div className="cards">
             <Card style={{ width: '18rem' }}>
               <Card.Body>
-                <Card.Title><a href="/sellerviewresult" class="text-decoration-none">{shop.businessName}</a></Card.Title>
+                <Card.Title><a href="/sellerviewresult" class="text-decoration-none"  onClick={(e) => handleC(e)}>{shop.businessName}</a></Card.Title>
                 <Card.Text >
+                  {localStorage.setItem('shop', shop.businessName)}
                   {shop.description}
                 </Card.Text>
               </Card.Body>
               <div className="editbutton">
-                <Fab size="medium" color="primary" aria-label="edit" href="/sellershop">
+                <Fab size="medium" color="primary" aria-label="edit" onClick={(e) => handleClick(e)}>
+                  {localStorage.setItem('shop', shop.businessName)}
                   <EditIcon />
                 </Fab>
               </div>

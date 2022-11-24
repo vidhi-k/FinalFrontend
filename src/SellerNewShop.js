@@ -24,9 +24,10 @@ const SellerNewShop = () => {
   const [address, setAddress] = useState("");
   const [items, setItems] = useState([]);
   const [contact, setContact] = useState("");
-  const [category, setCategory] = useState("l");
+  const [category, setCategory] = useState("l"); 
 
-  const categories = ["cobler", "vegetables"];
+  const categories = ["Cobler", "Cycle Repair", "Home Bakery", "Home Decor", "Thrift Store"];
+
 
   const handleChange = (event) => {
     setCategory(event.target.value);
@@ -34,7 +35,7 @@ const SellerNewShop = () => {
   };
 
   const isAuthenticated = localStorage.getItem("isAuthenticated");
-  if (!isAuthenticated) {
+  if (isAuthenticated === "false") {
     return <Navigate to="/" replace></Navigate>
   }
 
@@ -80,7 +81,7 @@ const SellerNewShop = () => {
         <Form>
           <Form.Group className="mb-3" controlId="formBasicShopName">
             <Form.Label>Shop Name</Form.Label>
-            <Form.Control type="text" placeholder="Enter Shop Name" onChange={e => setShopName(e.target.value)} />
+            <Form.Control type="text" placeholder="Enter Shop Name" required="true" onChange={e => setShopName(e.target.value)} />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicShopName">
             <Form.Label>Owner's Name</Form.Label>
@@ -88,15 +89,15 @@ const SellerNewShop = () => {
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicShopName">
             <Form.Label>Contact</Form.Label>
-            <Form.Control type="number" placeholder="Enter Contact Number" onChange={e => setContact(e.target.value)} />
+            <Form.Control type="number" placeholder="Enter Contact Number" required="true" onChange={e => setContact(e.target.value)} />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicAddress">
             <Form.Label>Address</Form.Label>
-            <Form.Control type="text" placeholder="Enter Address" onChange={e => setAddress(e.target.value)} />
+            <Form.Control type="text" placeholder="Enter Address" required="true" onChange={e => setAddress(e.target.value)} />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicDescription">
             <Form.Label>Description</Form.Label>
-            <Form.Control type="text" placeholder="Enter Description" onChange={e => setDesc(e.target.value)} />
+            <Form.Control type="text" placeholder="Enter Description" required="true" onChange={e => setDesc(e.target.value)} />
           </Form.Group>
           <Box sx={{ minWidth: 120 }}>
             <FormControl fullWidth>
@@ -116,12 +117,9 @@ const SellerNewShop = () => {
           </Box>
           <Form.Group className="mb-3" controlId="formBasicDescription">
             <Form.Label>Items</Form.Label>
-            <Form.Control type="text" placeholder="Enter Items You Sell" onChange={e => setItems(e.target.value)} />
+            <Form.Control type="text" placeholder="Enter Items You Sell" required="true" onChange={e => setItems(e.target.value)} />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Allow location" />
-          </Form.Group>
-          <Button variant="primary" type="submit" href="/seller" onClick={(e) => handleSubmit(e)}>
+          <Button variant="primary" type="submit" onClick={(e) => handleSubmit(e)}>
             Submit
           </Button>
         </Form>
