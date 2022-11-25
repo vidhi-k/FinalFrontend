@@ -17,7 +17,7 @@ const Header = () => {
         <>
       <Navbar className='heade' bg="light" variant="light">
         <Container className="header" >
-        <h1> <a href="/buyerhome" class="text-decoration-none"><span className="hawkerspot">HawkerSpot.</span></a></h1>
+        <h1> <a href="/buyerhome" class="text-decoration-none"><span className="hawkerspot">OneStop.</span></a></h1>
         <h4> <a href="/" class=" logout text-decoration-none" onClick={(e) => handleSubmit(e)}>Logout</a></h4>
         </Container>
       </Navbar>

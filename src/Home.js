@@ -12,7 +12,7 @@ const Home = () => {
       
       <Container >
       <div className="title">
-      <h1>Welcome to <span className="hawkerspot">HawkerSpot.</span></h1>
+      <h1>Welcome to <span className="hawkerspot">OneStop.</span></h1>
             <p>Find everything here.</p>
             
             <div className='buttons'>

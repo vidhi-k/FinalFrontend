@@ -44,7 +44,7 @@ const BuyerLogin = () => {
   return (
     <Container >
         <div className='Login_name'> 
-        <h1>Welcome to <span className="hawkerspot">HawkerSpot.</span></h1>
+        <h1>Welcome to <span className="hawkerspot">OneStop.</span></h1>
         <p>Find everything here.</p>
             <h2>Login</h2>
             <p>Sign in with your data that you entered during your registration</p>

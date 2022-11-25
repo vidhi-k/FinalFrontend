@@ -43,7 +43,7 @@ const SellerSignUp = () => {
   return (
     <Container >
         <div className='Signin_name'>
-        <h1>Welcome to <span className="hawkerspot">HawkerSpot.</span></h1>
+        <h1>Welcome to <span className="hawkerspot">OneStop.</span></h1>
             <p>Find everything here.</p>
             <h2>Sign Up</h2>
             <p className='para'>Sign in with your data that you entered during your registration</p>
