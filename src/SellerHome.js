@@ -1,4 +1,4 @@
-import Header from "./sellerHeader"
+import Header from "./Header"
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import Fab from '@mui/material/Fab';
@@ -12,37 +12,40 @@ const SellerHome = () => {
 
   const [shops, setShops] = useState([]);
   const navigate = useNavigate();
+
+  //using local storage to set authentication check and current user, also the current shop
   const loggedInUser = localStorage.getItem("user");
   const isAuthenticated = localStorage.getItem("isAuthenticated");
   localStorage.setItem('shop', "");
 
+  //getting all the shops
   useEffect(() => {
-    // console.log(loggedInUser);
-    axios.get("/seller/shops")
+    axios.get("/get/shops")
       .then(response => {
-        // console.log(response);
         setShops(response.data);
       })
   }, [])
 
+  //checking isAuthenticated to prevent direct access
   if (isAuthenticated === "false") {
     console.log(isAuthenticated);
     return <Navigate to="/" replace></Navigate>
   }
   
+  //navigating to the page to add new shop
   const handleSubmit = async (event) => {
     navigate("/sellernewshop");
   }
 
-    const handleClick = async (event) => {
-    // console.log(event.target);
+  //navigating to edit the list of item sold
+  const handleClick = async (event) => {
     navigate("/sellershop");
   }
 
+  //filtering out random shops
   var finalShops = shops.filter((shop) => {
     return shop.name === loggedInUser;
   })
-  // console.log(finalShops);
 
   return (
 

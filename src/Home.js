@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import './Home.css';
 const Home = () => {
 
+  //using local storage to initial authentication check and current user
   localStorage.setItem("isAuthenticated", "false");
   localStorage.setItem('user', "");
 

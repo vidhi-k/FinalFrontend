@@ -1,4 +1,4 @@
-import Header from "./sellerHeader"
+import Header from "./Header"
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState, Navigate } from "react";
@@ -17,7 +17,6 @@ import React from "react";
 const SellerNewShop = () => {
 
   const location = useGeoLocation();
-  // const locationTwo = useLocation();
   const navigate = useNavigate();
   const [shopName, setShopName] = useState("");
   const [desc, setDesc] = useState("");
@@ -26,14 +25,15 @@ const SellerNewShop = () => {
   const [contact, setContact] = useState("");
   const [category, setCategory] = useState("l"); 
 
+  //as mentioned before, these can be made dynamic on scaling the app
   const categories = ["Cobler", "Cycle Repair", "Home Bakery", "Home Decor", "Thrift Store"];
-
 
   const handleChange = (event) => {
     setCategory(event.target.value);
     console.log(category);
   };
 
+  //to prevent direct access of the page
   const isAuthenticated = localStorage.getItem("isAuthenticated");
   if (isAuthenticated === "false") {
     return <Navigate to="/" replace></Navigate>
@@ -44,9 +44,11 @@ const SellerNewShop = () => {
     // console.log(strings);
     return strings;
   }
+
   const loggedInUser = localStorage.getItem("user");
   console.log(location.coordinates);
 
+  //posting the details of the new shop
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
@@ -70,8 +72,6 @@ const SellerNewShop = () => {
       console.log(error);
     }
   }
-
-
 
   return (
     <>

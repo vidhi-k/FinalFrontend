@@ -13,8 +13,12 @@ const BuyerSignUp = () => {
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
   const [password, setPassword] = useState("");
-  // const [isSignedUp, setSignedUp] = useState(false);
 
+  //using local storage to prevent direct access of this page
+  localStorage.setItem("isAuthenticated", "false");
+  localStorage.setItem('user', "");
+
+  //posting the new user details
   const handleSubmit = async (event) => {
     try {
         event.preventDefault();
@@ -25,7 +29,6 @@ const BuyerSignUp = () => {
         });
         console.log(data);
         if(data.status === 201){
-            // setSignedUp(true);
             localStorage.setItem("isAuthenticated", "true");
             localStorage.setItem('user', data.data.name);
             navigate("/buyerhome", {state:{user: {name}}});

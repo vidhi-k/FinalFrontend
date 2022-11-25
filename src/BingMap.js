@@ -11,35 +11,35 @@ import './BuyerResults.css';
 const api_key = process.env.REACT_APP_SECRET_KEY;
 
 function BingMap() {
+
   const location = useLocation();
   const [pins, setPins] = useState([]);
   const type = location.state.user.shops;
-  // console.log(type);
-
+ 
+  //getting data of shops
   useEffect(() => {
     axios.get("/get/shops")
       .then(response => {
-        // console.log(response.data);
         setPins(response.data);
       })
   })
 
+  //using local storage to prevent direct access of this page
   const isAuthenticated = localStorage.getItem("isAuthenticated");
-  // console.log(isAuthenticated);
 
   if (isAuthenticated === "false") {
     return <Navigate to="/" replace></Navigate>
   }
 
+  //filtering relevant shops
   const temp = pins.filter((pin) => {
     return pin.category === type;
   })
 
-  // console.log(temp);
-
   const pushPins = [];
   const tempTwo = [];
 
+  //push pins for map
   Promise.all(temp.map((t) => (
     pushPins.push({
       center: {
@@ -58,9 +58,6 @@ function BingMap() {
     })
   )));
 
-    // console.log(tempTwo);
-
-  // const pushPins = [pushPin];
   return (
     <>
       <Navbar className='heade' bg="light" variant="light">

@@ -1,4 +1,4 @@
-import Header from "./sellerHeader"
+import Header from "./Header"
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState } from "react";
@@ -16,15 +16,17 @@ const SellerShop = () => {
     return strings;
   }
 
+  //getting the name and shop name of the current user and the selected shop
   const loggedInUser = localStorage.getItem("user");
   const loggedInShop = localStorage.getItem("shop");
-  // console.log(loggedInShop);
 
+  //checking isAuthenticated to prevent direct access
   const isAuthenticated = localStorage.getItem("isAuthenticated");
   if (isAuthenticated === "false") {
     return <Navigate to="/" replace></Navigate>
   }
 
+  //patch request to add new items that will be sold
   const handleSubmit = async (event) => {
     try {
         event.preventDefault();

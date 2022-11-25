@@ -9,7 +9,6 @@ import Buyerhome from "./Buyerhome";
 import BingMap from "./BingMap";
 import SellerHome from "./SellerHome";
 import SellerNewShop from "./SellerNewShop";
-import SellerViewResult from "./SellerViewResult";
 import SellerShop from "./SellerShop";
 import Geolocation from "./Geolocation";
 function App() {
@@ -25,7 +24,6 @@ function App() {
       <Route path="/buyerresults" element={<BingMap />}></Route>
       <Route path="/sellerhome" element={<SellerHome />}></Route>
       <Route path="/sellernewshop" element={<SellerNewShop />}></Route>
-      <Route path="/sellerviewresult" element={<SellerViewResult />}></Route>
       <Route path="/sellershop" element={<SellerShop />}></Route>
       <Route path="/geolocation" element={<Geolocation />}></Route>
     </Routes>

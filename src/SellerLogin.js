@@ -11,10 +11,14 @@ const SellerLogin = () => {
 
   const navigate = useNavigate();
 
+  //using local storage to initial authentication check and current user
+  localStorage.setItem("isAuthenticated", "false");
+  localStorage.setItem('user', "");
 
   const [contact, setContact] = useState("");
   const [password, setPassword] = useState("");
 
+  //checking if the user exists
   const handleSubmit = async (event) => {
     try {
         event.preventDefault();

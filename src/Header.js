@@ -5,6 +5,8 @@ import './Header.css';
 const Header = () => {
 
   const navigate = useNavigate();
+
+  //on logging out, isAuthenticated is changed to false so that random pages cannot be accessed
   const handleSubmit = async (event) => {
     localStorage.setItem("isAuthenticated", "false");
     localStorage.setItem('user', "");

@@ -14,6 +14,11 @@ const SellerSignUp = () => {
   const [contact, setContact] = useState("");
   const [password, setPassword] = useState("");
 
+  //using local storage to initial authentication check and current user 
+  localStorage.setItem("isAuthenticated", "false");
+  localStorage.setItem('user', "");
+
+  //posting the new user details
   const handleSubmit = async (event) => {
     try {
         event.preventDefault();
